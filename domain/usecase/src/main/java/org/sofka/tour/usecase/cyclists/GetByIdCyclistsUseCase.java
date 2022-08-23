@@ -6,12 +6,9 @@ import org.sofka.tour.model.cyclists.gateways.CyclistsRepository;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
-public class PostCyclistsUseCase {
+public class GetByIdCyclistsUseCase {
     private final CyclistsRepository cyclistsRepository;
-
-    public Mono<Cyclists> saveCyclists(Cyclists cyclists){
-
-        return cyclists.getNumber().toString().length() <= 3 ? cyclistsRepository.save(cyclists) : Mono.error(Exception::new);
-
+    public Mono<Cyclists> listCyclistWithId(String id){
+        return  cyclistsRepository.findById(id);
     }
 }

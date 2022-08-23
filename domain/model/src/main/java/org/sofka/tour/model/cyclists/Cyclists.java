@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class Cyclists {
     private String id;
     private String fullName;
-    private String number;
+    private Integer number;
     private String countryId;
+
 }

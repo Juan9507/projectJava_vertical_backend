@@ -15,6 +15,7 @@ spring:
     mongodb:
       uri: "mongodb+srv://prueba1:prueba1@cluster0.evwtm.mongodb.net/?retryWrites=true&w=majority"
       database: "tourFrance"
+      auto-index-creation: true
 management:
   endpoints:
     web:

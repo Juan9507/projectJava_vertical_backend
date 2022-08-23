@@ -12,10 +12,11 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 
 @Configuration
 public class RouterRest {
-@Bean
-public RouterFunction<ServerResponse> routerFunction(Handler handler) {
-    return route(GET("/api/countries"), handler::GetListCountries)
-    .andRoute(POST("/api/save/country"), handler::PostSaveCountry);
-
+    @Bean
+    public RouterFunction<ServerResponse> routerFunction(Handler handler) {
+        return route(GET("/api/countries"), handler::GetListCountries)
+                .andRoute(POST("/api/save/country"), handler::PostSaveCountry)
+                .andRoute(PUT("/api/update/country/{id}"), handler::PutUpdateCountry)
+                .andRoute(DELETE("/api/delete/country/{id}"), handler::DeleteCountry);
     }
 }
