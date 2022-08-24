@@ -13,6 +13,6 @@ public class GetByIdTeamUseCase {
     private final TeamsRepository teamsRepository;
 
     public Mono<Teams> findTeamWithId(String id){
-        return Objects.nonNull(id) ? teamsRepository.findById(id) : Mono.error(Exception::new);
+        return Objects.nonNull(id) ? teamsRepository.findById(id) : Mono.empty();
     }
 }

@@ -11,7 +11,7 @@ public class PostCyclistsUseCase {
 
     public Mono<Cyclists> saveCyclists(Cyclists cyclists){
 
-        return cyclists.getNumber().toString().length() <= 3 ? cyclistsRepository.save(cyclists) : Mono.error(Exception::new);
+        return cyclists.getNumber().toString().length() <= 3 ? cyclistsRepository.save(cyclists) : Mono.empty();
 
     }
 }

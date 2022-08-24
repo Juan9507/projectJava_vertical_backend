@@ -3,10 +3,7 @@ package org.sofka.tour.api.teams;
 import lombok.RequiredArgsConstructor;
 import org.sofka.tour.model.cyclists.Cyclists;
 import org.sofka.tour.model.teams.Teams;
-import org.sofka.tour.usecase.teams.AddCyclistsToTeamUseCase;
-import org.sofka.tour.usecase.teams.GetByIdTeamUseCase;
-import org.sofka.tour.usecase.teams.GetTeamsUseCase;
-import org.sofka.tour.usecase.teams.PostTeamsUseCase;
+import org.sofka.tour.usecase.teams.*;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -22,6 +19,8 @@ public class TeamsHandler {
     private final GetByIdTeamUseCase getByIdTeamUseCase;
 
     private final AddCyclistsToTeamUseCase addCyclistsToTeamUseCase;
+
+    private final GetConsultCyclistsWithCodeTeamUseCase getConsultCyclistsWithCodeTeamUseCase;
 
     public Mono<ServerResponse> postSaveTeam(ServerRequest serverRequest){
         return serverRequest.bodyToMono(Teams.class)
@@ -49,5 +48,12 @@ public class TeamsHandler {
                 .flatMap(result -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(addCyclistsToTeamUseCase.addCyclistToTeam(result, id), Teams.class));
+    }
+
+    public Mono<ServerResponse> getConsultCyclistsWithCodeTeam(ServerRequest serverRequest){
+        var code = serverRequest.pathVariable("code");
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(getConsultCyclistsWithCodeTeamUseCase.consultCyclistsWithCodeTeam(code), Cyclists.class);
     }
 }
