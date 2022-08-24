@@ -9,5 +9,4 @@ public interface CyclistsRepository {
     Flux<Cyclists> findAll();
     Mono<Cyclists> findById(String id);
     Mono<Void>  deleteById(String id);
-
 }

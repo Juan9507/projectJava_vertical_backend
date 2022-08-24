@@ -17,6 +17,7 @@ public class TeamsRouteRest {
                 .and(route(GET("api/list/teams"), teamsHandler::getListTeams))
                 .and(route(GET("api/list/teams/{id}"), teamsHandler::getFindTeam))
                 .and(route(POST("api/add/team/cyclist/{id}"), teamsHandler::postAddCyclistWithTeam))
-                .and(route(GET("api/consult/cyclists/code/teams/{code}"), teamsHandler::getConsultCyclistsWithCodeTeam));
+                .and(route(GET("api/consult/cyclists/code/teams/{code}"), teamsHandler::getConsultCyclistsWithCodeTeam))
+                .and(route(GET("api/consult/team/id/country/{id}"), teamsHandler::getConsultTeamAssociatedCountry));
     }
 }

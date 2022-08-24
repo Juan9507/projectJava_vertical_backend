@@ -18,36 +18,40 @@ public class Handler {
 
     private final PostCountriesUseCase postCountriesUseCase;
     private final GetCountriesUseCase getCountriesUseCase;
-
     private final PutCountriesUseCase putCountriesUseCase;
-
     private final DeleteCountryUseCase deleteCountryUseCase;
 
-
-    public Mono<ServerResponse> PostSaveCountry(ServerRequest serverRequest){
+    /*METODOS DE INSERCION*/
+    public Mono<ServerResponse> PostSaveCountry(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(Country.class)
                 .flatMap(result -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON).body(postCountriesUseCase.saveCountry(result), Country.class));
     }
 
-    public Mono<ServerResponse> GetListCountries(ServerRequest serverRequest){
+    public Mono<ServerResponse> PutUpdateCountry(ServerRequest serverRequest) {
+        var id = serverRequest.pathVariable("id");
+        return serverRequest.bodyToMono(Country.class)
+                .flatMap(country -> putCountriesUseCase.updateCountry(id, country))
+                .flatMap(result -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(result));
+    }
+
+    public Mono<ServerResponse> DeleteCountry(ServerRequest serverRequest) {
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(deleteCountryUseCase.deleteCountry(id), Country.class);
+    }
+
+    /*METODOS DE CONSULTAS*/
+    public Mono<ServerResponse> GetListCountries(ServerRequest serverRequest) {
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(getCountriesUseCase.listCountries(), Country.class);
     }
 
-    public Mono<ServerResponse> PutUpdateCountry(ServerRequest serverRequest){
-        var id = serverRequest.pathVariable("id");
-        return serverRequest.bodyToMono(Country.class)
-                .flatMap(country -> putCountriesUseCase.updateCountry(id,country))
-                .flatMap(result -> ServerResponse.ok()
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .bodyValue(result));
-    }
-    public Mono<ServerResponse> DeleteCountry(ServerRequest serverRequest){
-        var id = serverRequest.pathVariable( "id");
-        return ServerResponse.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(deleteCountryUseCase.deleteCountry(id), Country.class);
-    }
+
+
+
 }

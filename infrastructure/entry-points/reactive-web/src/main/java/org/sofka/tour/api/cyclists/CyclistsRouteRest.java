@@ -17,7 +17,8 @@ public class CyclistsRouteRest {
                 .andRoute(PUT("api/update/cyclists/{id}"), cyclistsHandler::PutCyclist)
                 .andRoute(GET("api/list/cyclists/{id}"), cyclistsHandler::findByIdCyclist)
                 .andRoute(DELETE("api/delete/cyclists/{id}"), cyclistsHandler::deleteCyclist)
-                .andRoute(GET("api/consult/number/cyclists/{numberCyclist}"), cyclistsHandler::consultCyclistsWithCode);
+                .andRoute(GET("api/consult/number/cyclists/{numberCyclist}"), cyclistsHandler::consultCyclistsWithCode)
+                .andRoute(GET("api/consult/country/cyclists/{id}"), cyclistsHandler::consultCyclistsWithCountry);
 
     }
 }
