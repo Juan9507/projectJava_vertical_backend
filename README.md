@@ -46,49 +46,8 @@ Este m�dulo es el m�s externo de la arquitectura, es el encargado de ensambl
 
 **Los beans de los casos de uso se disponibilizan automaticamente gracias a un '@ComponentScan' ubicado en esta capa.**
 
-## mode of use router points
+## Data Base
 
-<b>Data base mongodb Atlas</b> 
-
-<li>Teams</li>
-
-![img.png](img.png)
-
-![img_1.png](img_1.png)
-
-![img_2.png](img_2.png)
-
-![img_3.png](img_3.png)
-
-![img_4.png](img_4.png)
-
-![img_5.png](img_5.png)
-
-<li>Cyclist</li>
-
-![img_6.png](img_6.png)
-
-![img_7.png](img_7.png)
-
-![img_8.png](img_8.png)
-
-![img_9.png](img_9.png)
-
-![img_10.png](img_10.png)
-
-![img_11.png](img_11.png)
-
-![img_12.png](img_12.png)
-
-<li>Country</li>
-
-![img_13.png](img_13.png)
-
-![img_15.png](img_15.png)
-
-![img_16.png](img_16.png)
-
-![img_17.png](img_17.png)
-
+<b>Data base mongodb Atlas</b>
 
 
